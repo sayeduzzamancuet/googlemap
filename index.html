@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Google Map</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="map">
+    </div>
+    <script>
+        function initMap() {
+            var options = {
+                zoom: 16,
+                center: {
+                    lat: 23.7481428,
+                    lng: 90.4043722
+                }
+            }
+            var map = new google.maps.Map(document.getElementById('map'), options);
+            var marker = new google.maps.Marker({
+                position: {
+                    lat: 23.7481428,
+                    lng: 90.4043722
+                },
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png'
+            });
+            var infoWindow = new google.maps.InfoWindow({
+                content: '<h1>Your home</h1>'
+            });
+            marker.addListener('click', function() {
+                infoWindow.open(map, marker);
+            });
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArXNpewqimHOnlkimiHSzGyQqeHbXTAP8&callback=initMap" async defer>
+    </script>
+</body>
+
+</html>
